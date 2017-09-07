@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+
+<param name="use_sim_time" value="true" />
+
+<node pkg="rossc" type="pid_control.py" name="pid_control" output="screen">
+  <param name="yawKp" value="1.0" type="double"/>
+  <param name="yawKi" value="0.0" type="double"/>
+  <param name="yawKd" value="0.0" type="double"/>
+
+  <param name="velKp" value="1.0" type="double"/>
+  <param name="velKi" value="0.0" type="double"/>
+  <param name="velKd" value="0.0" type="double"/>
+
+  <param name="start_engaged" value="true" type="bool"/>
+  <param name="yaw_cntrl" value="true" type="bool"/>
+  <param name="yaw_type" value="yaw_rate" type="string"/>
+  <param name="vel_cntrl" value="true" type="bool"/>
+  
+  <!-- Subscription - what does the node listen to for navigation data?-->
+  <remap from="odometry/nav" to="odometry/nav" />
+  <!-- Subscription - what does the node listen to for setpoint commands?-->
+  <remap from="cmd_course" to="cmd_vel" />
+  <!-- Publication - where does the node send the thrust commands?-->
+  <remap from="cmd_drive" to="cmd_drive" />
+
+</node>
+
+</launch>
