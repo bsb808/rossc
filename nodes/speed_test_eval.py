@@ -73,6 +73,7 @@ def callback(data):
     global testthen
     global testfthen
     global complete
+    global pub
 
     # Locaiton of buoys
     g1 = [36.59661518,	-121.88827949]
@@ -122,7 +123,6 @@ def callback(data):
             # publish
             msg = Float32()
             msg.data = etime
-            pub = rospy.Publisher('etime',Float32,queue_size=10)
             pub.publish(msg)
             complete = True
 
@@ -150,10 +150,11 @@ def listener():
     testfthen = None
     global complete
     complete = False
+    global pub
     rospy.init_node('speed_test_eval', anonymous=True)
 
     rospy.Subscriber("nav_odom", Odometry, callback)
-
+    pub = rospy.Publisher('etime',Float32,queue_size=10)
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
 
