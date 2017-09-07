@@ -10,10 +10,10 @@ from math import pi
 import rospy
 import tf
 from dynamic_reconfigure.server import Server
-from kingfisher_control.cfg import YawDynamicConfig
-from kingfisher_control.cfg import TwistDynamicConfig
+from rossc.cfg import YawDynamicConfig
+from rossc.cfg import TwistDynamicConfig
 
-from kingfisher_control.msg import PidDiagnose
+from rossc.msg import PidDiagnose
 
 from geometry_msgs.msg import Vector3
 from geometry_msgs.msg import Twist
