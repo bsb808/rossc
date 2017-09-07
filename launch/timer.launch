@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="bagfile" />
+  <node pkg="rossc" type="speed_test_eval.py" name="speed_test" 
+	output="screen"/>
+  <node pkg="rosbag" type="record" name="timerbag"
+	args="-O $(arg bagfile) /etime"/>
+</launch>
